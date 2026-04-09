@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swift-messaging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swift-messaging
+  template:
+    metadata:
+      labels:
+        app: swift-messaging
+    spec:
+      containers:
+        - name: swift-messaging
+          image: swift-messaging:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

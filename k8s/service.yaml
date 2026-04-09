@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: swift-messaging
+spec:
+  type: NodePort
+  selector:
+    app: swift-messaging
+  ports:
+    - port: 80
+      targetPort: 8080
