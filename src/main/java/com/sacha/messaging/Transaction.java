@@ -1,20 +1,23 @@
 package com.sacha.messaging;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Transaction {
     private String id;
-    private TransactionStatus statut;
+    @JsonProperty("status")
+    private TransactionStatus status;
 
-    public Transaction(String id, TransactionStatus statut) {
+    public Transaction(String id, TransactionStatus status) {
         this.id = id;
-        this.statut = statut;
+        this.status = status;
     }
 
     public String getId() {
         return id;
     }
 
-    public TransactionStatus getStatut() {
-        return statut;
+    public TransactionStatus getStatus() {
+        return status;
     }
 
 }

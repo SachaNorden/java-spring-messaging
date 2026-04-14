@@ -20,6 +20,15 @@ public class MessageController {
     public List<Transaction> getMessages(){
         return transactions;
     }
+
+    @PostMapping
+    public Transaction createMessage(@RequestBody Transaction transaction){
+        for (Transaction transaction1 :transactions){
+            if(transaction1.getId().equals(transaction.getId())) throw new ResponseStatusException(HttpStatus.CONFLICT, "Transaction already exist");
+        }
+        transactions.add(transaction);
+        return transaction;
+    }
     @GetMapping("/{id}")
     public Transaction getMessageById(@PathVariable String id){
         for(Transaction t :transactions){
